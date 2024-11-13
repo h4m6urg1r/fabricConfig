@@ -1,29 +1,49 @@
-// @font-face {
-// 	font-family: 'DSEG14 Modern Mini';
-// 	src: url(/tmp/DSEG14-Modern-MINI/DSEG14ModernMini-Regular.ttf) format('truetype')
-// }
-#Time{
-	padding: 0rem;
-	font-size: 1.3rem;
-	font-family: 'DSEG14 Modern';
-	& label {
-		margin-top: 0.3rem;
-		&:last-child{
-			margin-bottom: 0.3rem;
+#sideBar-left {
+	all: unset;
+	background-color: $base;
+	font-family: 'FiraCode Nerd Font';
+	/* #VerticalBar{ */
+	/* 	margin: 27rem; */
+	/* } */
+	#microphone-circular-progress-bar{
+		font-size: 1rem;
+		color: $color0;
+		border: solid 3px $color6;
+	}
+	#speaker-circular-progress-bar{
+		font-size: 1rem;
+		color: $color0;
+		border: solid 3px $color2;
+	}
+	#Time{
+		padding: 0rem;
+		font-size: 1.3rem;
+		font-family: 'DSEG14 Modern';
+		& label {
+			margin-top: 0.3rem;
+			&:last-child{
+				margin-bottom: 0.3rem;
+			}
 		}
 	}
-}
-#RevealerToggle{
-	all:unset;
-	// padding: 0rem;
-	& > label {
-		margin: -0.1rem 0rem;
-		font-family: 'FiraCode Nerd Font';
+
+	#revealer-toggle{
+		all:unset;
+		& > label {
+			margin: -0.1rem 0rem;
+		}
 	}
-	// min-height: unset;
-	// background: unset;
-}
-#progress-bar {
-	color: #fff;
-	border: solid 3px #000;
+
+	#cpu-progress-bar {
+		// color: $color0;
+		border: solid 1px transparentize($color2, 0.3);
+	}
+	#battery-progress-bar {
+		// color: $color0;
+		border: solid 3px $color4;
+	}
+	#memory-progress-bar {
+		// color: $color0;
+		border: solid 3px $color1;
+	}
 }

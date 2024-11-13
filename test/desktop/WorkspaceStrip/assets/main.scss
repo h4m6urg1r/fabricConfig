@@ -1,0 +1,21 @@
+$ws-col: ( $color1 $color2 $color3 $color4 $color5 );
+
+#workspacesStrip-top, #workspacesStrip-bottom {
+	all: unset;
+	font-size: 0rem;
+	@for $i from 1 through 10 {
+		button:nth-child(#{$i}) {
+			all: unset;
+			background-color: nth($ws-col, (($i - 1) % (length($ws-col)))+1);
+			min-height: 0.25rem;
+			border-radius: 0rem;
+			opacity: 0.55;
+			&.active {
+				opacity: 1;
+			}
+			&.empty {
+				opacity: .245;
+			}
+		}
+	}
+}

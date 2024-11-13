@@ -1,32 +1,34 @@
 {
-  lib,
-  fetchFromGitHub,
-  buildPythonPackage,
-  ninja,
-  meson,
-  gtk3,
-  glib,
-  gtk-layer-shell,
-  gobject-introspection,
-  python3Packages,
-  libdbusmenu-gtk3,
-  pkg-config,
-  gdk-pixbuf,
-  cairo,
-  librsvg,
-  # For Cvc
-  libpulseaudio,
+	inputs,
+	lib,
+	fetchFromGitHub,
+	buildPythonPackage,
+	ninja,
+	meson,
+	gtk3,
+	glib,
+	gtk-layer-shell,
+	gobject-introspection,
+	python3Packages,
+	libdbusmenu-gtk3,
+	pkg-config,
+	gdk-pixbuf,
+	cairo,
+	librsvg,
+	# For Cvc
+	libpulseaudio,
 }:
 buildPythonPackage rec {
   pname = "fabric";
   version = "0.0.1";
-  src = fetchFromGitHub {
-    owner = "its-darsh";
-    repo = "fabric";
-    rev = "db3903756238a18fb3e5292e4e4c0e0041240658";
-    sha256 = "sha256-j0mvQm9cwogUb0m2ilUxEigSUytkQIlOm+9Kdpyyheo=";
-    fetchSubmodules = true;
-  };
+  # src = fetchFromGitHub {
+  #   owner = "its-darsh";
+  #   repo = "fabric";
+  #   rev = "db3903756238a18fb3e5292e4e4c0e0041240658";
+  #   sha256 = "sha256-j0mvQm9cwogUb0m2ilUxEigSUytkQIlOm+9Kdpyyheo=";
+  #   fetchSubmodules = true;
+  # };
+  src = inputs.fabric;
   # We have a custom setup
   format = "other";
 

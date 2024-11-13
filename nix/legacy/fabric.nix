@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   fetchFromGitHub,
   buildPythonPackage,
@@ -12,49 +13,52 @@
   wrapGAppsHook,
   gdk-pixbuf,
   librsvg,
+  webkitgtk_4_1,
 }:
 buildPythonPackage rec {
-  pname = "fabric";
-  version = "0.0.1";
+	pname = "fabric";
+	version = "0.0.1";
 
-  src = fetchFromGitHub {
-    owner = "its-darsh";
-    repo = "fabric";
-    rev = "e96d7ea313a1c3ceb9d4134e831358c2a66680d1";
-    sha256 = "sha256-huc8LJwkeQMQ3jELul5IpPhvwHXk4fWY98xzhYohwGQ=";
-  };
+	# src = fetchFromGitHub {
+	#   owner = "its-darsh";
+	#   repo = "fabric";
+	#   rev = "e96d7ea313a1c3ceb9d4134e831358c2a66680d1";
+	#   sha256 = "sha256-huc8LJwkeQMQ3jELul5IpPhvwHXk4fWY98xzhYohwGQ=";
+	# };
+	src = inputs.fabric;
 
-  format = "setuptools";
+	format = "setuptools";
 
-  # unit tests will fail with hyprland module
-  doCheck = false;
+	# unit tests will fail with hyprland module
+	doCheck = false;
 
-  nativeBuildInputs = [
-    gobject-introspection
-    python3Packages.setuptools
-  ];
+	nativeBuildInputs = [
+		gobject-introspection
+		python3Packages.setuptools
+	];
 
-  propagatedBuildInputs = [
-    glib
-    libdbusmenu-gtk3
-    gtk3
-    gtk-layer-shell
-    gdk-pixbuf
-    librsvg
+	propagatedBuildInputs = [
+		glib
+		libdbusmenu-gtk3
+		gtk3
+		gtk-layer-shell
+		gdk-pixbuf
+		librsvg
+		webkitgtk_4_1
 
-    # defined in requirements.txt
-    python3Packages.click
-    python3Packages.loguru
-    python3Packages.pycairo
-    python3Packages.pygobject3
-    python3Packages.pygobject-stubs
-  ];
+		# defined in requirements.txt
+		python3Packages.click
+		python3Packages.loguru
+		python3Packages.pycairo
+		python3Packages.pygobject3
+		python3Packages.pygobject-stubs
+	];
 
-  meta = with lib; {
-    description = "next-gen GTK+ based desktop widgets python framework";
-    homepage = "http://github.com/Fabric-Development/fabric";
-    # To be changed later
-    license = with licenses; [lgpl21Only mpl11];
-    platforms = lib.platforms.linux;
-  };
+	meta = with lib; {
+		description = "next-gen GTK+ based desktop widgets python framework";
+		homepage = "http://github.com/Fabric-Development/fabric";
+		# To be changed later
+		license = with licenses; [lgpl21Only mpl11];
+		platforms = lib.platforms.linux;
+	};
 }

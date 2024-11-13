@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "fabric": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731273105,
+        "narHash": "sha256-eBOtU3hgUJuff51SbVgmbL7g4ofVt+pY84BHFB5DlRY=",
+        "owner": "Fabric-Development",
+        "repo": "fabric",
+        "rev": "9da7f87e3c6a8d6b58da6fac22e2d9f3ab209c51",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fabric-Development",
+        "repo": "fabric",
+        "type": "github"
+      }
+    },
     "gtk-session-lock": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -36,11 +52,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1715499532,
-        "narHash": "sha256-9UJLb8rdi2VokYcfOBQHUzP3iNxOPNWcbK++ENElpk0=",
+        "lastModified": 1731245184,
+        "narHash": "sha256-vmLS8+x+gHRv1yzj3n+GTAEObwmhxmkkukB2DwtJRdU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "af8b9db5c00f1a8e4b83578acc578ff7d823b786",
+        "rev": "aebe249544837ce42588aa4b2e7972222ba12e8f",
         "type": "github"
       },
       "original": {
@@ -52,6 +68,7 @@
     },
     "root": {
       "inputs": {
+        "fabric": "fabric",
         "gtk-session-lock": "gtk-session-lock",
         "nixpkgs": "nixpkgs_2",
         "systems": "systems"

@@ -1,8 +1,10 @@
 import time
 from gi.repository import GLib
-from fabric.widgets.button import Button
-from fabric.widgets.label import Label
-from fabric.widgets.box import Box
+from fabric.widgets import (
+	Button,
+	Label,
+	Box,
+)
 from fabric.utils import invoke_repeater
 
 class DateWidget(Button):
@@ -30,7 +32,7 @@ class DateWidget(Button):
 		self.tooltip_text = tooltip_text
 		ctime = time.localtime()
 		self.timeLabels = {
-			key: Label(label = str(time.strftime(self.directiveMap[key], time.localtime()))) for key in self.directiveMap
+			key: Label(name = key, label = str(time.strftime(self.directiveMap[key], time.localtime()))) for key in self.directiveMap
 		}
 		super().__init__(
 			child = Box(

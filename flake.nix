@@ -1,6 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+	fabric = {
+		url = "github:Fabric-Development/fabric";
+		flake = false;
+	};
     systems.url = "github:nix-systems/default";
     gtk-session-lock.url = "github:Cu3PO42/gtk-session-lock";
   };
@@ -34,10 +38,11 @@
   in {
 		packages = forAllSystems (system:
             let pkgs = nixpkgs.legacyPackages.${system};
-            in import ./packages.nix { inherit pkgs; }
+            in import ./packages.nix { inherit pkgs inputs; }
         );
     devShells = eachSystem (pkgs: let
-      fabric = pkgs.python3Packages.callPackage ./nix/fabric-meson.nix {};
+      fabric = pkgs.python3Packages.callPackage ./nix/legacy/fabric.nix { inputs = inputs; };
+	  gir-cvc = pkgs.callPackage ./nix/legacy/gir-cvc.nix {};
     in {
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
@@ -59,11 +64,12 @@
         nativeBuildInputs = with pkgs; [
           vala # Vala compiler
           gobject-introspection
+		  gir-cvc
 
           # non python aditional packages
           gtk-session-lock # For gtk lock screen
           playerctl # For mpirs
-          gnome.gnome-bluetooth # For bluetooth
+          gnome-bluetooth # For bluetooth
           networkmanager # For network
           libgweather # For weather
           libgudev # For uevent monitoring

@@ -21,7 +21,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   src = fetchurl {
     url = "https://github.com/linuxmint/cinnamon-desktop/archive/refs/tags/master.mint22.tar.gz";
-    hash = "sha256-lZjJqNqVTFMZLyoozoX8aACEqqBTfPMDvJWBwxrvLms=";
+    hash = "sha256-cnUZ0SMJmJsq/jgu4s1HJaIo9Osm5S28aQ8FwdofSuE=";
   };
 
   nativeBuildInputs = [meson ninja pkg-config gobject-introspection];
@@ -32,6 +32,10 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs = [
+	cmake
+	systemd
+	xkeyboard_config
+	libxkbfile
     gdk-pixbuf
     gtk3
     libpulseaudio

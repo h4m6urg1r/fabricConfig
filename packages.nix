@@ -1,8 +1,10 @@
 {
 	pkgs,
+	inputs,
 	...
 }:let
-	fabric = pkgs.python3Packages.callPackage ./nix/fabric-meson.nix {};
+	fabric = pkgs.python3Packages.callPackage ./nix/legacy/fabric.nix { inherit inputs; };
+	gir-cvc = pkgs.callPackage ./nix/legacy/gir-cvc.nix {};
 	package = {
 		# lib,
 		python3Packages
@@ -13,6 +15,7 @@
 		pyproject = true;
 		propagatedBuildInputs = [
 			fabric
+			gir-cvc
 			psutil
 			colorthief
 			requests

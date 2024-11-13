@@ -9,3 +9,4 @@ requires = ["setuptools"]
 [project.scripts]
 desktopEnv = "desktop.main:main"
 fabricBar = "desktop.bar:bar.main"
+clipboard = "desktop.windows:clipboard.main"
